@@ -1,15 +1,18 @@
 import React, { FC } from "react";
 import { Pressable, View, Text, Platform } from "react-native";
 import { StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export interface CategoryGridTileProps {
   title: string;
   color: string;
+  onPress: () => void;
 }
 
 export const CategoryGridTile: FC<CategoryGridTileProps> = ({
   title,
   color,
+  onPress,
 }) => {
   return (
     <View style={[styles.gridItem]}>
@@ -19,6 +22,7 @@ export const CategoryGridTile: FC<CategoryGridTileProps> = ({
           styles.button,
           { backgroundColor: color, opacity: pressed ? 0.7 : 1 },
         ]}
+        onPress={onPress}
       >
         <View style={styles.innerContainer}>
           <Text style={styles.title}>{title}</Text>
@@ -41,7 +45,6 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOpacity: 0.26,
     overflow: Platform.OS === "android" ? "hidden" : "visible",
-
   },
   innerContainer: {
     flex: 1,
@@ -62,4 +65,3 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-

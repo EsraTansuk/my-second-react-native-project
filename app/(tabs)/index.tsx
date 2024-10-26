@@ -14,8 +14,8 @@ export default function App() {
       <StatusBar style="light" />
       <NavigationContainer independent={true}>
         <Stack.Navigator>
-          <Stack.Screen name="Meals Categories" component={CategoriesScreen} />
-          <Stack.Screen name="Meals Overview" component={MealsOverviewScreen} />
+          <Stack.Screen name="MealsCategories" component={CategoriesScreen} />
+          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>
