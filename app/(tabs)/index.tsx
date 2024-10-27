@@ -15,7 +15,7 @@ export default function App() {
       <NavigationContainer independent={true}>
         <Stack.Navigator>
           <Stack.Screen name="MealsCategories" component={CategoriesScreen} />
-          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
+          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen}  />
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>

@@ -21,12 +21,17 @@ export const MealsOverviewScreen: FC<MealsOverviewScreenProps> = ({
   );
 
   function renderMealItem(itemData: any) {
-    return (
-      <MealItem
-        title={itemData.item.title}
-        imageUrl={itemData.item.imageUrl}
-      />
-    );
+    const item = itemData.item;
+
+    const mealItemProps = {
+      title: item.title,
+      imageUrl: item.imageUrl,
+      duration: item.duration,
+      complexity: item.complexity,
+      affordability: item.affordability,
+    };
+
+    return <MealItem {...mealItemProps} />;
   }
 
   return (
@@ -45,6 +50,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 16,
+    padding: 10,
   },
 });
