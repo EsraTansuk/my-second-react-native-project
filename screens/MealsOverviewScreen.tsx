@@ -1,24 +1,36 @@
 import { MealItem } from "@/components/MealItem";
-import { MEALS } from "@/data/dummy-data";
-import React, { FC } from "react";
+import { CATEGORIES, MEALS } from "@/data/dummy-data";
+import React, { FC, useEffect, useLayoutEffect } from "react";
 import { View, Text } from "react-native";
 import { StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 
 export interface MealsOverviewScreenProps {
   route: any;
-  imageUrl: string;
+  imageUrl?: string;
+  navigation: any;
 }
 
 export const MealsOverviewScreen: FC<MealsOverviewScreenProps> = ({
   route,
   imageUrl,
+  navigation,
 }) => {
   const catId = route.params?.categoryId;
 
   const displayedMeals = MEALS.filter(
     (mealItem) => mealItem.categoryIds.indexOf(catId) >= 0
   );
+
+  useLayoutEffect(() => {
+    const categoryTitle = CATEGORIES.find(
+      (category) => category.id === catId
+    )?.title;
+
+    navigation.setOptions({
+      title: categoryTitle,
+    });
+  }, [navigation, catId]);
 
   function renderMealItem(itemData: any) {
     const item = itemData.item;
@@ -29,6 +41,7 @@ export const MealsOverviewScreen: FC<MealsOverviewScreenProps> = ({
       duration: item.duration,
       complexity: item.complexity,
       affordability: item.affordability,
+      id: item.id,
     };
 
     return <MealItem {...mealItemProps} />;

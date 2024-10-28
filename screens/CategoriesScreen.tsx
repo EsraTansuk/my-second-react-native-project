@@ -12,7 +12,6 @@ export const CategoriesScreen: FC<CategoriesScreenProps> = ({ navigation }) => {
     function pressHandler() {
       navigation.navigate("MealsOverview", {
         categoryId: itemData.item.id,
-        title: itemData.item.title,
       });
     }
 
