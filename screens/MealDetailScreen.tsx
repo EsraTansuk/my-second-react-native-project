@@ -32,7 +32,7 @@ export const MealDetailScreen: FC<MealDetailScreenProps> = ({
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <Button title="Tap me!" onPress={() => {}} />;
+        return <Button title="Tap me!" onPress={headerButtonPressHandler} />;
       },
     });
   }, [navigation, headerButtonPressHandler]);
