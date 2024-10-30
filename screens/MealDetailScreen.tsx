@@ -1,3 +1,4 @@
+import { IconButton } from "@/components/IconButton";
 import { List } from "@/components/MealDetail/List";
 import { Subtitle } from "@/components/MealDetail/Subtitle";
 import { MealDetails } from "@/components/MealDetails";
@@ -32,7 +33,7 @@ export const MealDetailScreen: FC<MealDetailScreenProps> = ({
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <Button title="Tap me!" onPress={headerButtonPressHandler} />;
+        return <IconButton icon="star" color="white" onPress={headerButtonPressHandler} />;
       },
     });
   }, [navigation, headerButtonPressHandler]);

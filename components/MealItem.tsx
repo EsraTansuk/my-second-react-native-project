@@ -3,7 +3,7 @@ import { View, Text, Pressable, Image, Platform } from "react-native";
 import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "@/types";
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { MealDetails } from "./MealDetails";
 
 export interface MealItemProps {
@@ -17,8 +17,8 @@ export interface MealItemProps {
 
 export type MealDetailNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
-  'MealDetail'
->; 
+  "MealDetail"
+>;
 
 export const MealItem: FC<MealItemProps> = ({
   title,
@@ -48,7 +48,13 @@ export const MealItem: FC<MealItemProps> = ({
             <Image source={{ uri: imageUrl }} style={styles.image} />
             <Text style={styles.title}>{title}</Text>
           </View>
-          <MealDetails duration={duration} affordability={affordability} complexity={complexity} />
+          <MealDetails
+            duration={duration}
+            affordability={affordability}
+            complexity={complexity}
+            style={{ justifyContent: "center" }}
+            textStyle={styles.detailItem}
+          />
         </View>
       </Pressable>
     </View>
