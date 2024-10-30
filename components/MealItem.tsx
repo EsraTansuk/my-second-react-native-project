@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "@/types";
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { MealDetails } from "./MealDetails";
 
 export interface MealItemProps {
   title: string;
@@ -22,33 +23,32 @@ export type MealDetailNavigationProp = NativeStackNavigationProp<
 export const MealItem: FC<MealItemProps> = ({
   title,
   imageUrl,
+  id,
   duration,
   complexity,
   affordability,
-  id,
 }) => {
   const navigation = useNavigation<MealDetailNavigationProp>();
 
-  navigation.navigate('MealDetail', {
-    mealId: id,
-  });
+  function selectMealItemHandler() {
+    navigation.navigate("MealDetail", {
+      mealId: id,
+    });
+  }
 
   return (
     <View style={styles.mealItem}>
       <Pressable
         android_ripple={{ color: "#ccc" }}
         style={({ pressed }) => [pressed ? styles.buttonPressed : null]}
+        onPress={selectMealItemHandler}
       >
         <View style={styles.innerContainer}>
           <View>
             <Image source={{ uri: imageUrl }} style={styles.image} />
             <Text style={styles.title}>{title}</Text>
           </View>
-          <View style={styles.details}>
-            <Text style={styles.detailItem}>{duration}m</Text>
-            <Text>{complexity.toUpperCase()}</Text>
-            <Text>{affordability.toUpperCase()}</Text>
-          </View>
+          <MealDetails duration={duration} affordability={affordability} complexity={complexity} />
         </View>
       </Pressable>
     </View>
@@ -84,12 +84,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     margin: 8,
-  },
-  details: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 8,
   },
   detailItem: {
     marginHorizontal: 4,

@@ -1,10 +1,11 @@
 import { CategoriesScreen } from "@/screens/CategoriesScreen";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { StatusBar, StyleSheet } from "react-native";
+import { Button, StatusBar, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { MealsOverviewScreen } from "@/screens/MealsOverviewScreen";
 import { MealDetailScreen } from "@/screens/MealDetailScreen";
+import { Text } from "react-native";
 
 type RootStackParamList = {
   MealsCategories: undefined;
@@ -50,9 +51,7 @@ export default function App() {
           <Stack.Screen
             name="MealDetail"
             component={MealDetailScreen}
-            options={{
-              title: "Meal Details",
-            }}
+            
           />
         </Stack.Navigator>
       </NavigationContainer>
