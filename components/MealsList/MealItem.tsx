@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "@/types";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { MealDetails } from "./MealDetails";
+import { MealDetails } from "../MealDetails";
 
 export interface MealItemProps {
   title: string;
